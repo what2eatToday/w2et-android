@@ -6,7 +6,7 @@ package com.w2et.android.model;
  *  Description:
  */
 
-import com.w2et.android.greendao.model.Shop;
+import com.w2et.android.greendao.entity.Shop;
 
 public class WeightNode {
     private int weight;

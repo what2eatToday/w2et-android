@@ -7,8 +7,11 @@ package com.w2et.android.abs;
  */
 
 import android.app.Application;
+import android.database.sqlite.SQLiteDatabase;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.w2et.android.greendao.gen.DaoMaster;
+import com.w2et.android.greendao.gen.DaoSession;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -40,7 +43,16 @@ public class App extends Application {
         ARouter.init(this);
 
     }
-
+    private DaoSession daoSession;
+    public DaoSession getDaoSession() {
+        return daoSession;
+    }
+    private void initGreenDao() {
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "aserbao.db");
+        SQLiteDatabase db = helper.getWritableDatabase();
+        DaoMaster daoMaster = new DaoMaster(db);
+        daoSession = daoMaster.newSession();
+    }
     private Set<BaseActivity> allActivities;
     public void addActivity(BaseActivity act) {
         if (allActivities == null) {

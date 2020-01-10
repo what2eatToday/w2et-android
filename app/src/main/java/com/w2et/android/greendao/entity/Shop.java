@@ -1,4 +1,4 @@
-package com.w2et.android.greendao.model;
+package com.w2et.android.greendao.entity;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
